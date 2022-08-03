@@ -1,0 +1,20 @@
+<model-viewer bounds="tight" enable-pan src="bomba_aberta.glb" ar ar-modes="webxr scene-viewer quick-look" camera-controls environment-image="neutral" poster="poster.webp" shadow-intensity="1" camera-orbit="-223.7deg 68.77deg auto">
+    <button class="Hotspot" slot="hotspot-1" data-position="-0.04687946581153246m 0.019125766495884808m -0.05639127570214651m" data-normal="0.0014081681768086777m 0.31364894245440844m -0.9495379707834843m" data-visibility-attribute="visible">
+        <div class="HotspotAnnotation">PEÇA1</div>
+    </button><button class="Hotspot" slot="hotspot-5" data-position="0.08063664792444986m 0.24883393179648805m 0.11010258812772818m" data-normal="0.9999999999999881m -1.5150054743322448e-7m 3.268323675589099e-8m" data-visibility-attribute="visible">
+        <div class="HotspotAnnotation">PEÇA2
+        </div>
+    </button><button class="Hotspot" slot="hotspot-8" data-position="0.7125210987265046m -0.03841600483025488m -0.33381556138519786m" data-normal="-2.5303058859579043e-7m -0.5249161278864711m 0.8511539570986025m" data-visibility-attribute="visible">
+        <div class="HotspotAnnotation">PEÇA3
+        </div>
+    </button>
+    <div class="progress-bar hide" slot="progress-bar">
+        <div class="update-bar"></div>
+    </div>
+    <button slot="ar-button" id="ar-button">
+        View in your space
+    </button>
+    <div id="ar-prompt">
+        <img src="https://modelviewer.dev/shared-assets/icons/hand.png">
+    </div>
+</model-viewer>
