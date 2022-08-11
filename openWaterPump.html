@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="description" content="&lt;model-viewer&gt; template" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link type="text/css" href="./styles.css" rel="stylesheet" />
+    <link type="text/css" href="styles.css" rel="stylesheet" />
     <!-- OPTIONAL: The :focus-visible polyfill removes the focus ring for some input types -->
     <script
       src="https://unpkg.com/focus-visible@5.0.2/dist/focus-visible.js"
@@ -25,36 +25,20 @@
       poster="poster.webp"
       shadow-intensity="1"
       camera-orbit="-223.7deg 68.77deg auto"
+      autoplay
     >
-    <!-- Legenda sobre Modelo -->
-<!-- 
-      <button
-        class="Hotspot"
-        slot="hotspot-1"
-        data-position="-0.04687946581153246m 0.019125766495884808m -0.05639127570214651m"
-        data-normal="0.0014081681768086777m 0.31364894245440844m -0.9495379707834843m"
-        data-visibility-attribute="visible">
-        <div class="HotspotAnnotation">Info</div></button> -->
-      
-     
-      
       <div class="progress-bar hide" slot="progress-bar">
-       
         <div class="update-bar"></div>
-      
       </div>
-      
+
       <button slot="ar-button" id="ar-button">View in your space</button>
-      
+
       <div id="ar-prompt">
-      
         <img src="ar_hand_prompt.png" />
-      
       </div>
 
       <div class="slider">
         <div class="slides">
-          
           <button
             class="slide"
             onclick="switchSrc(this, 'OpenWaterPump')"
@@ -67,52 +51,59 @@
             style="background-image: url('assets/CloseWaterPump.png')"
           ></button>
 
-
+          <button
+            class="slide"
+            onclick="switchSrc(this, 'OpenWaterPumpAni')"
+            style="background-image: url('assets/OpenWaterPumpAni.gif')"
+          >
+            <a href="/Animados/WaterPumpAni.html"></a>
+          </button>
         </div>
       </div>
-
     </model-viewer>
+
     <script src="script.js"></script>
+
     <!-- Loads <model-viewer> for browsers: -->
     <script
       type="module"
       src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"
     ></script>
 
-
-
     <script type="module">
-      const modelViewer = document.querySelector("model-viewer");
-    
+      const modelViewer = document.querySelector('model-viewer');
+
       window.switchSrc = (element, name) => {
-        const base = "assets/" + name;
-        modelViewer.src = base + ".glb";
-        modelViewer.poster = base + ".png";
-        const slides = document.querySelectorAll(".slide");
+        const base = 'assets/' + name;
+        modelViewer.src = base + '.glb';
+        modelViewer.poster = base + '.png';
+        const slides = document.querySelectorAll('.slide');
         slides.forEach((element) => {
-          element.classList.remove("selected");
+          element.classList.remove('selected');
         });
-        element.classList.add("selected");
+        element.classList.add('selected');
       };
-    
-      document.querySelector(".slider").addEventListener("beforexrselect", (ev) => {
-        // Keep slider interactions from affecting the XR scene.
-        ev.preventDefault();
-      });
+
+      document
+        .querySelector('.slider')
+        .addEventListener('beforexrselect', (ev) => {
+          // Keep slider interactions from affecting the XR scene.
+          ev.preventDefault();
+        });
     </script>
-    
+
     <style>
       /* This keeps child nodes hidden while the element loads */
       :not(:defined) > * {
         display: none;
       }
-    
+
       model-viewer {
         background-color: #eee;
         overflow-x: hidden;
         --poster-color: #eee;
       }
-    
+
       #ar-button {
         background-image: url(../../assets/ic_view_in_ar_new_googblue_48dp.png);
         background-repeat: no-repeat;
@@ -133,19 +124,19 @@
         border-radius: 18px;
         border: 1px solid #dadce0;
       }
-    
+
       #ar-button:active {
         background-color: #e8eaed;
       }
-    
+
       #ar-button:focus {
         outline: none;
       }
-    
+
       #ar-button:focus-visible {
         outline: 1px solid #4285f4;
       }
-    
+
       @keyframes circle {
         from {
           transform: translateX(-50%) rotate(0deg) translateX(50px) rotate(0deg);
@@ -155,7 +146,7 @@
             rotate(-360deg);
         }
       }
-    
+
       @keyframes elongate {
         from {
           transform: translateX(100px);
@@ -164,7 +155,7 @@
           transform: translateX(-100px);
         }
       }
-    
+
       model-viewer > #ar-prompt {
         position: absolute;
         left: 50%;
@@ -172,15 +163,15 @@
         animation: elongate 2s infinite ease-in-out alternate;
         display: none;
       }
-    
-      model-viewer[ar-status="session-started"] > #ar-prompt {
+
+      model-viewer[ar-status='session-started'] > #ar-prompt {
         display: block;
       }
-    
+
       model-viewer > #ar-prompt > img {
         animation: circle 4s linear infinite;
       }
-    
+
       model-viewer > #ar-failure {
         position: absolute;
         left: 50%;
@@ -188,11 +179,11 @@
         bottom: 175px;
         display: none;
       }
-    
-      model-viewer[ar-tracking="not-tracking"] > #ar-failure {
+
+      model-viewer[ar-tracking='not-tracking'] > #ar-failure {
         display: block;
       }
-    
+
       .slider {
         width: 100%;
         text-align: center;
@@ -200,7 +191,7 @@
         position: absolute;
         bottom: 16px;
       }
-    
+
       .slides {
         display: flex;
         overflow-x: auto;
@@ -208,7 +199,7 @@
         scroll-behavior: smooth;
         -webkit-overflow-scrolling: touch;
       }
-    
+
       .slide {
         scroll-snap-align: start;
         flex-shrink: 0;
@@ -223,21 +214,18 @@
         border: none;
         display: flex;
       }
-    
+
       .slide.selected {
         border: 2px solid #4285f4;
       }
-    
+
       .slide:focus {
         outline: none;
       }
-    
+
       .slide:focus-visible {
         outline: 1px solid #4285f4;
       }
     </style>
-    
-
-
   </body>
 </html>
